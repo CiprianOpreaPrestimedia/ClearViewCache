@@ -14,11 +14,9 @@ class ClearViewCacheServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['command.view.clear'] = $this->app->share(
-            function () {
-                return new ClearViewCache();
-            }
-        );
+        $this->app['command.view.clear'] = function () {
+           return new ClearViewCache();
+        };
 
         $this->commands(['command.view.clear']);
     }
